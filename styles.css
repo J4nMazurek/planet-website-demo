@@ -1,0 +1,25 @@
+body {
+    background-color: #1f1f1f;
+    overflow: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, 
+p, span, a, li, td, th, 
+label, input, textarea, button {
+    color: #e2e2e2;
+    font-family: "Space Mono", monospace;
+}
+
+h1 {
+    font-weight: 900;
+    font-size: 3em;
+    color: rgb(255, 255, 255);
+}
+
+.title-container {
+    position: absolute;
+    text-align: left;
+    z-index: 1;
+    top: 2%;
+    left: 4%;
+}
