@@ -61,6 +61,11 @@ function restartSimulation() {
     }
 }
 
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+    translate(width/2, height/2);
+}
+
 function setup() {
     
     createCanvas(windowWidth, windowHeight);
