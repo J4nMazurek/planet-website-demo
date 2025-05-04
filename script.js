@@ -2,26 +2,62 @@ let sun;
 let planets = [];
 let G = 10;
 
+let numPlanets;
+let sunMassValue;
+let minPlanetMass;
+let maxPlanetMass;
+let maxVelocity;
+
+function initializeControls() {
+    // Initialize sliders
+    document.querySelectorAll('input[type="range"]').forEach(slider => {
+        slider.nextElementSibling.textContent = slider.value;
+        slider.addEventListener('input', (e) => {
+            e.target.nextElementSibling.textContent = e.target.value;
+        });
+    });
+
+    // Get initial values
+    numPlanets = parseInt(document.getElementById('numPlanets').value);
+    sunMassValue = parseInt(document.getElementById('sunMass').value);
+    minPlanetMass = parseInt(document.getElementById('minPlanetMass').value);
+    maxPlanetMass = parseInt(document.getElementById('maxPlanetMass').value);
+    maxVelocity = parseInt(document.getElementById('maxVelocity').value);
+
+    // Add restart button listener
+    document.getElementById('restartBtn').addEventListener('click', restartSimulation);
+}
+
+function restartSimulation() {
+    // Update values from sliders
+    numPlanets = parseInt(document.getElementById('numPlanets').value);
+    sunMassValue = parseInt(document.getElementById('sunMass').value);
+    minPlanetMass = parseInt(document.getElementById('minPlanetMass').value);
+    maxPlanetMass = parseInt(document.getElementById('maxPlanetMass').value);
+    maxVelocity = parseInt(document.getElementById('maxVelocity').value);
+
+    // Reset simulation
+    planets = [];
+    sun = new Body(sunMassValue, createVector(0,0), createVector(0, 0));
+
+    // Create new planets
+    for (let i = 0; i < numPlanets; i++){
+        let r = random(sun.r, min(windowWidth/2, windowHeight/2));
+        let theta = random(TWO_PI);
+        let planetPos = createVector(r * cos(theta), r * sin(theta));
+        let planetVel = createVector(random(-maxVelocity, maxVelocity), random(-maxVelocity, maxVelocity));
+        planets.push(new Body(random(minPlanetMass, maxPlanetMass), planetPos, planetVel, color(random(100,255))));
+    }
+}
 
 function setup() {
     
-  createCanvas(windowWidth, windowHeight);
-  frameRate(144);
-  canvas.setAttribute('style', 'image-rendering: pixelated;');
+    createCanvas(windowWidth, windowHeight);
+    frameRate(144);
+    canvas.setAttribute('style', 'image-rendering: pixelated;');
 
-
-  sun = new Body(100, createVector(0,0), createVector(0, 0));
-
-
-
-
-  for (let i = 0; i < 100; i++){
-    let r = random(sun.r, min(windowWidth/2, windowHeight/2));
-    let theta = random(TWO_PI);
-    let planetPos = createVector(r * cos(theta), r * sin(theta));
-    let planetVel = createVector(random(-5, 5), random(-5, 5));
-    planets.push(new Body(random(1,25), planetPos, planetVel, color(random(100,255))));
-  }
+    initializeControls();
+    restartSimulation();
 }
 
 function draw() {
@@ -44,8 +80,8 @@ function draw() {
         if(planet.pos.x > width/2 || planet.pos.x < -width/2 || planet.pos.y > height/2 || planet.pos.y < -height/2){
             planet.pos.x = random(-width/2, width/2);
             planet.pos.y = random(-height/2, height/2);
-            planet.vel.x = random(-1, 1);
-            planet.vel.y = random(-1, 1);
+            planet.vel.x = random(-maxVelocity, maxVelocity);
+            planet.vel.y = random(-maxVelocity, maxVelocity);
         }
         if (planet.pos.dist(sun.pos) < (sun.r/2 + planet.r/2)) {
             planets.splice(i, 1); // remove the planet from the array
