@@ -18,6 +18,7 @@ h1 {
 
 .title-container {
     text-align: left;
+    color: #ffffff33;
     z-index: 1;
 }
 
@@ -26,6 +27,8 @@ h1 {
     padding: 20px;
     border-radius: 10px;
     z-index: 1;
+    max-height: 100vh;
+    overflow-y: auto;
 }
 
 .control-group span {
@@ -45,11 +48,12 @@ h1 {
 }
 
 .control-group input {
-    width: 150px;
+    width: calc(100% - 40px);
+    min-width: 150px;
 }
 
 button {
-    background: #4CAF50;
+    background: #494949;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
@@ -79,6 +83,18 @@ button {
 
 .controls-hidden {
     display: none !important;
+}
+
+.slider{
+    
+    accent-color:  #f7f7f7ec;
+    width: 100%;
+    height: 10px;
+    background: #ffffff49;
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity .2s;
 }
 
 #restartBtn {
