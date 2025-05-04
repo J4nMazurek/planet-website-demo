@@ -8,6 +8,8 @@ let minPlanetMass;
 let maxPlanetMass;
 let maxVelocity;
 
+
+
 function initializeControls() {
     // Initialize sliders
     document.querySelectorAll('input[type="range"]').forEach(slider => {
@@ -26,6 +28,15 @@ function initializeControls() {
 
     // Add restart button listener
     document.getElementById('restartBtn').addEventListener('click', restartSimulation);
+
+    const toggleBtn = document.getElementById('toggleMenuBtn');
+    const controlsContainer = document.getElementById('controlsContainer');
+    const menuIcon = toggleBtn.querySelector('.menu-icon');
+    
+    toggleBtn.addEventListener('click', () => {
+        controlsContainer.classList.toggle('controls-hidden');
+        menuIcon.textContent = controlsContainer.classList.contains('controls-hidden') ? '☰' : '×';
+    });
 }
 
 function restartSimulation() {
@@ -127,4 +138,6 @@ function Body(_mass, _pos, _vel, _color){
         this.pos.x += this.vel.x;
         this.pos.y += this.vel.y;
     }
+
+    
 }

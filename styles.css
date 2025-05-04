@@ -17,17 +17,11 @@ h1 {
 }
 
 .title-container {
-    position: absolute;
     text-align: left;
     z-index: 1;
-    top: 2%;
-    left: 4%;
 }
 
 .controls-panel {
-    position: absolute;
-    right: 20px;
-    top: 20px;
     background: rgba(0, 0, 0, 0.7);
     padding: 20px;
     border-radius: 10px;
@@ -63,6 +57,32 @@ button {
     margin-top: 10px;
 }
 
-button:hover {
-    background: #45a049;
+#toggleMenuBtn {
+    z-index: 1001;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#toggleMenuBtn:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.menu-icon {
+    color: white;
+    font-size: 24px;
+}
+
+.controls-hidden {
+    display: none !important;
+}
+
+#restartBtn {
+    color: white;
+    font-size: 120%;
+    font-weight: 900;
 }

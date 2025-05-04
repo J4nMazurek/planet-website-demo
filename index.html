@@ -8,38 +8,49 @@
     <link href="styles.css" rel="stylesheet">
   </head>
   <body>
-    <div class="container">
-      <div>
-        <h1 class= "title-container">Planet simulation demo</h1>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <h1 class= "title-container">Planet simulation demo</h1>
+        </div>
       </div>
-      <div class="controls-panel">
-        <div class="control-group">
-          <label for="numPlanets">Number of Planets: </label>
-          <input type="range" id="numPlanets" min="1" max="200" value="100">
-          <span id="numPlanetsValue">100</span>
+      
+
+      <button id="toggleMenuBtn" class="position-fixed top-0 end-0 m-2">
+        <span class="menu-icon">×</span>
+      </button>
+
+      <div class="row">
+        <div id="controlsContainer" class="col-12 col-sm-6 col-md-4 col-lg-3 position-fixed bottom-sm-0 bottom-md-100 end-0 top-md-0 p-3">
+          <div class="controls-panel">
+            <div class="control-group">
+              <label for="numPlanets">Number of Planets: </label>
+              <input type="range" id="numPlanets" min="1" max="200" value="100">
+              <span id="numPlanetsValue">100</span>
+            </div>
+            <div class="control-group">
+              <label for="sunMass">Sun Mass: </label>
+              <input type="range" id="sunMass" min="50" max="500" value="100">
+              <span id="sunMassValue">100</span>
+            </div>
+            <div class="control-group">
+              <label for="minPlanetMass">Min Planet Mass: </label>
+              <input type="range" id="minPlanetMass" min="1" max="50" value="1">
+              <span id="minPlanetMassValue">1</span>
+            </div>
+            <div class="control-group">
+              <label for="maxPlanetMass">Max Planet Mass: </label>
+              <input type="range" id="maxPlanetMass" min="1" max="50" value="25">
+              <span id="maxPlanetMassValue">25</span>
+            </div>
+            <div class="control-group">
+              <label for="maxVelocity">Max Initial Velocity: </label>
+              <input type="range" id="maxVelocity" min="1" max="10" value="5">
+              <span id="maxVelocityValue">5</span>
+            </div>
+            <button id="restartBtn">Restart Simulation</button>
+          </div>
         </div>
-        <div class="control-group">
-          <label for="sunMass">Sun Mass: </label>
-          <input type="range" id="sunMass" min="50" max="500" value="100">
-          <span id="sunMassValue">100</span>
-        </div>
-        <div class="control-group">
-          <label for="minPlanetMass">Min Planet Mass: </label>
-          <input type="range" id="minPlanetMass" min="1" max="50" value="1">
-          <span id="minPlanetMassValue">1</span>
-        </div>
-        <div class="control-group">
-          <label for="maxPlanetMass">Max Planet Mass: </label>
-          <input type="range" id="maxPlanetMass" min="1" max="50" value="25">
-          <span id="maxPlanetMassValue">25</span>
-        </div>
-        <div class="control-group">
-          <label for="maxVelocity">Max Initial Velocity: </label>
-          <input type="range" id="maxVelocity" min="1" max="10" value="5">
-          <span id="maxVelocityValue">5</span>
-        </div>
-        <button id="restartBtn">Restart Simulation</button>
-      </div>
     </div>
       <div id="canvas-container"></div>
     </div>
